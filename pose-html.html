@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- Load Posenet -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+ </head>
+
+  <body>
+    <img id='homem' src='C:\Users\ulab31ec\Pictures\depositphotos_11196419-stock-photo-portrait-of-a-man-standing.jpg '/>
+  </body>
+  <!-- Place your code in the script tag below. You can also use an external .js file -->
+  <script>
+    var flipHorizontal = true;
+
+    var imageElement = document.getElementById('homem');
+
+    posenet.load().then(function(net) {
+      const pose = net.estimateSinglePose(imageElement, {
+        flipHorizontal: false
+      });
+      return pose;
+    }).then(function(pose){
+      console.log(pose);
+    })
+  </script>
+</html>
